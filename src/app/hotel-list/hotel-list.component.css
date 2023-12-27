@@ -1,0 +1,7 @@
+.hotels{
+  gap : 20px;
+}
+.btn-show{
+  display: flex;
+  gap: 5px;
+}
