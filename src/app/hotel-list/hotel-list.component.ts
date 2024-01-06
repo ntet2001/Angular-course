@@ -1,41 +1,30 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { Ihotel } from './hotel';
+import { StarRatingComponent} from '../shared/components/star-rating/star-rating/star-rating.component';
+import { HotelListService } from './hotel-list.service';
 
 @Component({
   selector: 'app-hotel-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,FormsModule,StarRatingComponent],
   templateUrl: './hotel-list.component.html',
   styleUrl: './hotel-list.component.css'
 })
-export class HotelListComponent {
+export class HotelListComponent implements OnInit{
+
+
   // property
   title : string = "liste d'hotel";
   showBadge : boolean = true;
   showBadgeText : string = "Hide";
   icon : string = "visibility_off"
-  hotels : any [] = [{
-    id: 1,
-    name: "Krystal palace",
-    description: "discover our suites,lounches and palaces",
-    imageUrl: "assets/img/hotel-room.jpg"
-  },{
-    id: 2,
-    name: "Makepe palace",
-    description: "discover our suites,lounches and palaces",
-    imageUrl: "assets/img/indoors.jpg"
-  },{
-    id: 3,
-    name: "Akwa palace",
-    description: "discover our suites,lounches and palaces",
-    imageUrl: "assets/img/the-interior.jpg"
-  },{
-    id: 4,
-    name: "Paul palace",
-    description: "discover our suites,lounches and palaces",
-    imageUrl: "assets/img/window.jpg"
-  }];
+  filtre : string = "mot";
+  receivedRating : string;
+  hotels : Ihotel[] = [];
 
+  constructor (private hotelListService : HotelListService){}
   /**
    * toggleShowBadge
    */
@@ -48,5 +37,14 @@ export class HotelListComponent {
       this.showBadgeText = "View";
       this.icon = "visibility";
     }
+  }
+
+  receivedRatingClicked(message : string) {
+    this.receivedRating = message;
+  }
+
+  ngOnInit(): void {
+    this.hotels = this.hotelListService.getHotels();
+    console.log('le cycle est initialiser');
   }
 }
