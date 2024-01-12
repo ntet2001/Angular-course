@@ -4,11 +4,19 @@ import { FormsModule } from '@angular/forms';
 import { Ihotel } from './hotel';
 import { StarRatingComponent} from '../shared/components/star-rating/star-rating/star-rating.component';
 import { HotelListService } from './hotel-list.service';
+import { RouterLink, RouterLinkActive, RouterModule, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-hotel-list',
   standalone: true,
-  imports: [CommonModule,FormsModule,StarRatingComponent],
+  imports: [CommonModule,
+    FormsModule,
+    StarRatingComponent,
+    RouterLink,
+    RouterLinkActive,
+    RouterOutlet,
+    RouterModule
+  ],
   templateUrl: './hotel-list.component.html',
   styleUrl: './hotel-list.component.css'
 })

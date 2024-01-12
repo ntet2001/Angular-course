@@ -25,7 +25,14 @@
       <h5 class="card-title">{{hotel.name}}</h5>
       <p class="card-text">{{hotel.description}}</p>
       <p class="card-text">{{hotel.price | currency: 'FCFA':'symbol':'1.2'}}</p>
-      <app-star-rating [rating] = "hotel.ratings" (starRatingClicked)="receivedRatingClicked($event)"></app-star-rating><br>
+      <div class="d-flex justify-content-between align-items-basline">
+        <app-star-rating [rating] = "hotel.ratings" (starRatingClicked)="receivedRatingClicked($event)"></app-star-rating><br>
+
+        <span class="material-icons bg-info text-white p-2 rounded-circle btn"
+        routerLink="/hotels/{{hotel.id}}" routerLinkActive="router-link-active" >
+          keyboard_arrow_right
+        </span>
+      </div>
       <a href="#" class="btn btn-primary" *ngIf="showBadge">New</a>
     </div>
   </div>

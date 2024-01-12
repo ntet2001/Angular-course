@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
 import { HotelListComponent } from './hotel-list/hotel-list.component';
+import { RouterLink, RouterLinkActive, RouterModule, RouterOutlet } from '@angular/router';
+import { HomeComponent } from './home/home.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet,HotelListComponent],
+  imports: [CommonModule,
+    HotelListComponent, RouterOutlet, RouterLink, RouterLinkActive
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
